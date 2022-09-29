@@ -1,0 +1,83 @@
+/* GENERAL SETTING --------------------------------------------- */
+:root {
+  --color-cover: green;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+body {
+  min-width: 100%;
+  height: 100vh;
+
+  font-family: sans-serif;
+  background-color: var(--color-cover);
+
+  display: grid;
+  place-content: center;
+}
+
+/* SET GRID LAYOUT ----------------------------------------- */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 1rem;
+
+  background-color: black;
+
+  width: min-content;
+  margin: auto;
+}
+
+.item {
+  width: 200px;
+  aspect-ratio: 1;
+
+  position: relative;
+  background-color: var(--color-cover);
+}
+
+.item-cover,
+.item-content {
+  width: 100%;
+  aspect-ratio: 1;
+  position: absolute;
+}
+
+.item-cover {
+  background-color: var(--color-cover);
+}
+
+.item-content {
+  background-image: url(./images/circle.svg);
+  background-size: 80%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* SET CLICK EFFECT ------------------------------------------------------------- */
+:is(#item-1-cover:checked, #item-2-cover:checked, #item-3-cover:checked, #item-4-cover:checked, #item-5-cover:checked, #item-6-cover:checked, #item-7-cover:checked, #item-8-cover:checked, #item-9-cover:checked)
+  ~ .item-cover {
+  background-color: blue;
+  opacity: 0;
+  pointer-events: none;
+}
+
+:is(#item-1-content:checked, #item-2-content:checked, #item-3-content:checked, #item-4-content:checked, #item-5-content:checked, #item-6-content:checked, #item-7-content:checked, #item-8-content:checked, #item-9-content:checked)
+  ~ .item-content {
+  background-image: url(./images/cross.svg);
+}
+
+/* DISAPPEAR INPUT -------------------------------------------------------- */
+input {
+  display: none;
+}
